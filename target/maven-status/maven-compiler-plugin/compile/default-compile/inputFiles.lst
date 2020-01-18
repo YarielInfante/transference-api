@@ -1,0 +1,11 @@
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/util/ComponentScannator.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/util/ApplicationProperties.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/config/database/DataSource.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/config/ApplicationContext.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/config/server/IServer.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/util/Query.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/annotation/Autowired.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/config/server/impl/GrizzlyHttpServer.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/TransferenceApi.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/web/rest/CustomerResource.java
+/Users/yarielinfante/Downloads/transference/src/main/java/com/revolut/transference/annotation/Component.java
