@@ -80,6 +80,7 @@ public class CustomerResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomer(@PathParam("id") long id) throws NotFoundException {
 
+        logger.info("finding customer");
         var customerService = ApplicationContext.getApplicationContext().getComponent(ICustomerService.class);
 
         Customer customer = customerService.findById(id);

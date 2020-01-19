@@ -5,6 +5,13 @@ public class AccountTopup {
     private long id;
     private String number;
 
+    public AccountTopup() {
+    }
+
+    public AccountTopup(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
