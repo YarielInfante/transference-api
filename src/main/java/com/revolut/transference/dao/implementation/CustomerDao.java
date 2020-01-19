@@ -14,8 +14,8 @@ import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Optional;
 
-import static com.revolut.transference.web.mapper.AccountMapper.resultSetToAccount;
-import static com.revolut.transference.web.mapper.CustomerMapper.resultSetToCustomer;
+import static com.revolut.transference.mapper.AccountMapper.resultSetToAccount;
+import static com.revolut.transference.mapper.CustomerMapper.resultSetToCustomer;
 
 public class CustomerDao implements ICustomerDao {
 

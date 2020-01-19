@@ -9,6 +9,9 @@ public class QueryLoader {
     private static String insertCustomer;
     private static String insertAccount;
     private static String selectCustomerFindOne;
+    private static String selectAccountFindByCustomerIdAndAccountNumber;
+    private static String insertJournal;
+    private static String insertTransaction;
 
     static {
 
@@ -23,6 +26,9 @@ public class QueryLoader {
             insertCustomer = prop.getProperty("insert.customer");
             insertAccount = prop.getProperty("insert.account");
             selectCustomerFindOne = prop.getProperty("select.customer.findOne");
+            selectAccountFindByCustomerIdAndAccountNumber = prop.getProperty("select.account.findByCustomerIdAndAccountNumber");
+            insertJournal = prop.getProperty("insert.journal");
+            insertTransaction = prop.getProperty("insert.transaction");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -34,23 +40,24 @@ public class QueryLoader {
         return insertCustomer;
     }
 
-    public static void setInsertCustomer(String insertCustomer) {
-        QueryLoader.insertCustomer = insertCustomer;
-    }
-
     public static String getInsertAccount() {
         return insertAccount;
-    }
-
-    public static void setInsertAccount(String insertAccount) {
-        QueryLoader.insertAccount = insertAccount;
     }
 
     public static String getSelectCustomerFindOne() {
         return selectCustomerFindOne;
     }
 
-    public static void setSelectCustomerFindOne(String selectCustomerFindOne) {
-        QueryLoader.selectCustomerFindOne = selectCustomerFindOne;
+    public static String getSelectAccountFindByCustomerIdAndAccountNumber() {
+        return selectAccountFindByCustomerIdAndAccountNumber;
     }
+
+    public static String getInsertJournal() {
+        return insertJournal;
+    }
+
+    public static String getInsertTransaction() {
+        return insertTransaction;
+    }
+
 }

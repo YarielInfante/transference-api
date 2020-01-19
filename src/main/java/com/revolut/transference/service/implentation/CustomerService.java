@@ -34,7 +34,6 @@ public class CustomerService implements ICustomerService {
 
             customerSaved = customerDao.save(customer);
             accountDao.save(new Account(numberGenerator.generateNumber(), customerSaved.getId()));
-            accountDao.save(new Account(numberGenerator.generateNumber(), customerSaved.getId()));
 
             connection.commit();
 

@@ -17,7 +17,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
-import static com.revolut.transference.web.mapper.CustomerMapper.toCustomer;
+import static com.revolut.transference.mapper.CustomerMapper.toCustomer;
 
 /**
  * Customer Resource. This is a rest controller that exposes /customers endpoint.
@@ -80,6 +80,7 @@ public class CustomerResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomer(@PathParam("id") long id) throws NotFoundException {
 
+        logger.info("finding customer");
         var customerService = ApplicationContext.getApplicationContext().getComponent(ICustomerService.class);
 
         Customer customer = customerService.findById(id);

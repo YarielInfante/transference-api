@@ -8,17 +8,17 @@ CREATE TABLE customer
 
 CREATE TABLE account
 (
-  id          INT NOT NULL AUTO_INCREMENT,
+  id          INT         NOT NULL AUTO_INCREMENT,
   number      VARCHAR(50) NOT NULL UNIQUE,
-  customer_id INT NOT NULL,
+  customer_id INT         NOT NULL,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE journal
 (
-  id      INT  NOT NULL AUTO_INCREMENT,
-  type_id INT  NOT NULL,
-  date    DATE NOT NULL,
+  id                  INT  NOT NULL AUTO_INCREMENT,
+  transaction_type_id INT  NOT NULL,
+  date                DATE NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -44,10 +44,21 @@ ALTER TABLE account
   ADD CONSTRAINT account_fk0 FOREIGN KEY (customer_id) REFERENCES customer (id);
 
 ALTER TABLE journal
-  ADD CONSTRAINT journal_fk0 FOREIGN KEY (type_id) REFERENCES transaction_type (id);
+  ADD CONSTRAINT journal_fk0 FOREIGN KEY (transaction_type_id) REFERENCES transaction_type (id);
 
 ALTER TABLE transaction
   ADD CONSTRAINT transaction_fk0 FOREIGN KEY (account_id) REFERENCES account (id);
 
 ALTER TABLE transaction
   ADD CONSTRAINT transaction_fk1 FOREIGN KEY (journal_id) REFERENCES journal (id);
+
+INSERT INTO transaction_type (name)
+values ('Deposit');
+INSERT INTO transaction_type (name)
+values ('Transfer');
+
+INSERT INTO customer (name, last_name)
+values ('cash book', '');
+INSERT INTO account (number, customer_id)
+values ('000000000', identity());
+

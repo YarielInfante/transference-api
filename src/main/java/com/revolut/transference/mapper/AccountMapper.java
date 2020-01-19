@@ -1,4 +1,4 @@
-package com.revolut.transference.web.mapper;
+package com.revolut.transference.mapper;
 
 import com.revolut.transference.domain.Account;
 

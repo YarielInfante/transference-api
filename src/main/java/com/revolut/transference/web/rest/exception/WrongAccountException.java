@@ -10,21 +10,18 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-/**
- * When an entity is not found this exception is thrown. It returns a http 404 with a ID not found message.
- */
 @Provider
-public class NotFoundException extends Exception implements ExceptionMapper<NotFoundException> {
+public class WrongAccountException extends Exception implements ExceptionMapper<WrongAccountException> {
 
-    private static final Logger logger = LoggerFactory.getLogger(NotFoundException.class);
+    private static final Logger logger = LoggerFactory.getLogger(WrongAccountException.class);
 
     @Override
-    public Response toResponse(NotFoundException e) {
+    public Response toResponse(WrongAccountException e) {
 
         logger.error(e.getMessage(), e);
 
         return Response.status(404)
-                .entity(new HttpResponseError(ErrorCode.NOT_FOUND, "ID not found"))
+                .entity(new HttpResponseError(ErrorCode.WRONG_ACCOUNT, "Account is incorrect"))
                 .type(MediaType.APPLICATION_JSON_TYPE)
                 .build();
     }
