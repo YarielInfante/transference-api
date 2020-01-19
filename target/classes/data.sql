@@ -9,7 +9,7 @@ CREATE TABLE customer
 CREATE TABLE account
 (
   id          INT NOT NULL AUTO_INCREMENT,
-  number      INT NOT NULL UNIQUE,
+  number      VARCHAR(50) NOT NULL UNIQUE,
   customer_id INT NOT NULL,
   PRIMARY KEY (id)
 );
@@ -51,5 +51,3 @@ ALTER TABLE transaction
 
 ALTER TABLE transaction
   ADD CONSTRAINT transaction_fk1 FOREIGN KEY (journal_id) REFERENCES journal (id);
-
-insert into customer(name, last_name) values ('ya','ya');

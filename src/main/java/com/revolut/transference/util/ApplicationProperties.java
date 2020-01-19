@@ -13,7 +13,7 @@ public class ApplicationProperties {
     private static String serverHttpPath;
     private static String pageText;
 
-    public static void load() {
+    static {
 
         Properties prop = new Properties();
 

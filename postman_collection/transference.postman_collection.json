@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "2c912f39-d4a7-4f2f-96f3-26c4d86b7881",
+		"name": "transference",
+		"description": "API for money transfer. It includes the following functionalities.\n\n- Create account\n- Top up an account\n- Transfer money between accounts\n- Check balance\n- Transactional history",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find a customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
