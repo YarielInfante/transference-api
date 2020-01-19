@@ -9,7 +9,7 @@ CREATE TABLE customer
 CREATE TABLE account
 (
   id          INT NOT NULL AUTO_INCREMENT,
-  number      INT NOT NULL UNIQUE,
+  number      VARCHAR(50) NOT NULL UNIQUE,
   customer_id INT NOT NULL,
   PRIMARY KEY (id)
 );

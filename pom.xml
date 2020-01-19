@@ -10,8 +10,9 @@
     <packaging>jar</packaging>
 
     <properties>
-        <jersey.version>2.27</jersey.version>
+        <jersey.version>2.30</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
     </properties>
 
     <dependencyManagement>
@@ -59,17 +60,23 @@
             <version>1.2.0</version>
         </dependency>
 
-        <!-- uncomment this to get JSON support:
          <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
+             <version>${jersey.version}</version>
         </dependency>
-        -->
+
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>2.6.1</version>
+            <version>3.4.2</version>
         </dependency>
 
         <dependency>
@@ -82,7 +89,27 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.200</version>
+            <scope>runtime</scope>
         </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+
 
     </dependencies>
 
@@ -94,8 +121,8 @@
                 <version>3.7.0</version>
                 <inherited>true</inherited>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
