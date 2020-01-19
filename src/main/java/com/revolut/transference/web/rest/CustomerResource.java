@@ -17,7 +17,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
-import static com.revolut.transference.web.mapper.CustomerMapper.toCustomer;
+import static com.revolut.transference.mapper.CustomerMapper.toCustomer;
 
 /**
  * Customer Resource. This is a rest controller that exposes /customers endpoint.
