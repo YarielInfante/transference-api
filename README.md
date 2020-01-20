@@ -95,7 +95,7 @@ Compile source code
 
 To compile source code run :
 
-        mvn clena package
+        mvn clean package
         
 To run compiled code compiled run :
         
