@@ -15,5 +15,5 @@ public interface IJournalService {
      * @param transaction     an instance of the transaction to make
      * @see TransactionTypeUtil
      */
-    void registerTransaction(TransactionTypeUtil transactionType, Transaction transaction);
+    void registerTransaction(TransactionTypeUtil transactionType, Transaction... transaction);
 }

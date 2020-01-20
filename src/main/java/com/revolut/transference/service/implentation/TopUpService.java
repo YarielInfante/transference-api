@@ -1,10 +1,10 @@
 package com.revolut.transference.service.implentation;
 
-import com.revolut.transference.annotation.Component;
 import com.revolut.transference.config.database.DataSource;
 import com.revolut.transference.dao.implementation.AccountDao;
 import com.revolut.transference.domain.Transaction;
 import com.revolut.transference.service.ITopUpService;
+import com.revolut.transference.util.CashBookAccountUtil;
 import com.revolut.transference.util.TransactionTypeUtil;
 import com.revolut.transference.web.dto.TopUpDto;
 import com.revolut.transference.web.rest.exception.WrongAccountException;
@@ -12,7 +12,6 @@ import com.revolut.transference.web.rest.exception.WrongAccountException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@Component
 public class TopUpService implements ITopUpService {
 
 
@@ -24,6 +23,8 @@ public class TopUpService implements ITopUpService {
         try {
             connection = DataSource.getConnection();
 
+            connection.setAutoCommit(false);
+
             var accountDao = new AccountDao(connection);
             var journalService = new JournalService(connection);
 
@@ -33,13 +34,20 @@ public class TopUpService implements ITopUpService {
                 throw new WrongAccountException();
             }
 
+            var cashbook = CashBookAccountUtil.getInstance();
+
             journalService.registerTransaction(
                     TransactionTypeUtil.DEPOSIT,
                     Transaction.build()
+                            .withAccountId(cashbook.getId())
+                            .withAmount(topUpDto.getAmount().negate()),
+                    Transaction.build()
                             .withAccountId(topUpDto.getAccount().getId())
-                            .withJournalId(0)
                             .withAmount(topUpDto.getAmount())
             );
+
+
+            connection.commit();
 
         } catch (SQLException e) {
             e.printStackTrace();

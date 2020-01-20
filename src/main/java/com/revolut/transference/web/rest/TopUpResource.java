@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
  *
  * @see ITopUpService
  */
-@Path("/customers/{id}/topup")
+@Path("/customers/topup")
 public class TopUpResource {
 
     private static final Logger logger = LoggerFactory.getLogger(TopUpResource.class);
@@ -24,7 +24,6 @@ public class TopUpResource {
     /**
      * Top up to an account given the customer id and account
      *
-     * @param customerId id of customer
      * @param topUpDto   an instance of {@link TopUpDto}
      * @return http status ok if anything went well
      * @throws WrongAccountException if account id does not belong to the customer id given
@@ -32,11 +31,9 @@ public class TopUpResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response topup(@PathParam("id") long customerId, TopUpDto topUpDto) throws WrongAccountException {
+    public Response topup(TopUpDto topUpDto) throws WrongAccountException {
 
         logger.info("making top up");
-
-        topUpDto.setCustomerId(customerId);
 
         ITopUpService topUpService = ApplicationContext.getApplicationContext().getComponent(ITopUpService.class);
 

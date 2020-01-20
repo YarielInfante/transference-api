@@ -61,7 +61,7 @@ public class TopUpRestTest extends JerseyTest {
         topup.setAccount(new AccountTopup(account.getId()));
         topup.setAmount(new BigDecimal(300));
 
-        var responseTopup = target(customerResourcePath + "/" + customerId + "/topup")
+        var responseTopup = target(customerResourcePath + "/topup")
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(topup, MediaType.APPLICATION_JSON_TYPE));
 

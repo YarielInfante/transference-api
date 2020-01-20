@@ -62,3 +62,4 @@ values ('cash book', '');
 INSERT INTO account (number, customer_id)
 values ('000000000', identity());
 
+SELECT A.ID ACCOUNT_ID, A.CUSTOMER_ID ACCOUNT_CUSTOMER_ID, A.NUMBER ACCOUNT_NUMBER FROM ACCOUNT A WHERE A.NUMBER = ?
