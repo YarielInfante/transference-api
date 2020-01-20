@@ -1,27 +1,31 @@
 package com.revolut.transference.config;
 
 
-import com.revolut.transference.util.ComponentScannator;
+import com.revolut.transference.service.ICustomerService;
+import com.revolut.transference.service.ITopUpService;
+import com.revolut.transference.service.ITransferService;
+import com.revolut.transference.service.implentation.CustomerService;
+import com.revolut.transference.service.implentation.TopUpService;
+import com.revolut.transference.service.implentation.TransferService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * <p>Use this class to access classes annotated with @Component.
- * This class is in charge of creating the application context by calling ComponentScannator to scan packages to look for classes annotated with @Component.</p>
+ * This class is in charge of creating the application context by creating instance of services.</p>
  *
  * @see com.revolut.transference.annotation.Component
  */
 public class ApplicationContext {
 
-    private static ComponentScannator componentScannator;
     private static ApplicationContext applicationContext;
+    private static Map<String, Object> components = new HashMap<>();
 
     private ApplicationContext() {
-        try {
-            componentScannator = new ComponentScannator();
-            componentScannator.scan("com.revolut.transference");
+        components.put(ICustomerService.class.getCanonicalName(), new CustomerService());
+        components.put(ITopUpService.class.getCanonicalName(), new TopUpService());
+        components.put(ITransferService.class.getCanonicalName(), new TransferService());
 
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -41,10 +45,10 @@ public class ApplicationContext {
      * @return an instance of T
      */
     public <T> T getComponent(Class<T> cl) {
-        return (T) componentScannator.getComponents().get(cl.getCanonicalName());
+        return (T) components.get(cl.getCanonicalName());
     }
 
     public Object getComponent(String name) {
-        return componentScannator.getComponents().get(name);
+        return components.get(name);
     }
 }

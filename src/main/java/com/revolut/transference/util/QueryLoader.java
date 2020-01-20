@@ -12,6 +12,8 @@ public class QueryLoader {
     private static String selectAccountFindByCustomerIdAndAccountNumber;
     private static String insertJournal;
     private static String insertTransaction;
+    private static String selectAccountFindByNumber;
+    private static String selectAccountBalance;
 
     static {
 
@@ -29,6 +31,8 @@ public class QueryLoader {
             selectAccountFindByCustomerIdAndAccountNumber = prop.getProperty("select.account.findByCustomerIdAndAccountNumber");
             insertJournal = prop.getProperty("insert.journal");
             insertTransaction = prop.getProperty("insert.transaction");
+            selectAccountFindByNumber = prop.getProperty("select.account.findByNumber");
+            selectAccountBalance = prop.getProperty("select.account.balance");
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -60,4 +64,11 @@ public class QueryLoader {
         return insertTransaction;
     }
 
+    public static String getSelectAccountFindByNumber() {
+        return selectAccountFindByNumber;
+    }
+
+    public static String getSelectAccountBalance() {
+        return selectAccountBalance;
+    }
 }

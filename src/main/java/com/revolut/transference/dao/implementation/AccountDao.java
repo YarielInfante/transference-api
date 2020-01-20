@@ -2,14 +2,17 @@ package com.revolut.transference.dao.implementation;
 
 import com.revolut.transference.dao.IAccountDao;
 import com.revolut.transference.domain.Account;
+import com.revolut.transference.mapper.AccountMapper;
 import com.revolut.transference.util.QueryLoader;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Optional;
 
 public class AccountDao implements IAccountDao {
 
@@ -64,4 +67,47 @@ public class AccountDao implements IAccountDao {
 
         return false;
     }
+
+    public Account findByNumber(String number) {
+
+        try (var statement = connection.prepareStatement(QueryLoader.getSelectAccountFindByNumber())) {
+            statement.setString(1, number);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return Optional.of(resultSet)
+                        .map(AccountMapper.resultSetToAccount)
+                        .get();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public BigDecimal getBalance(long accountId) {
+
+        try (var statement = connection.prepareStatement(QueryLoader.getSelectAccountBalance())) {
+            statement.setLong(1, accountId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return Optional.ofNullable(resultSet.getBigDecimal(1)).orElse(BigDecimal.ZERO);
+            } else {
+                return BigDecimal.ZERO;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return BigDecimal.ZERO;
+    }
+
+
 }

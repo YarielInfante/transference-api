@@ -1,6 +1,5 @@
 package com.revolut.transference.service.implentation;
 
-import com.revolut.transference.annotation.Component;
 import com.revolut.transference.config.database.DataSource;
 import com.revolut.transference.dao.IAccountDao;
 import com.revolut.transference.dao.ICustomerDao;
@@ -15,7 +14,6 @@ import com.revolut.transference.util.TOTPManager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@Component
 public class CustomerService implements ICustomerService {
 
 
