@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "2c912f39-d4a7-4f2f-96f3-26c4d86b7881",
+		"name": "transference",
+		"description": "API for money transfer. It includes the following functionalities.\n\n- Create account\n- Top up an account\n- Transfer money between accounts\n- Check balance\n- Transactional history",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create customer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Yariel\",\n    \"lastName\": \"Infante\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/customers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find a customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/customers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "top up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 3,\n    \"account\": {\n        \"id\": 3\n    },\n    \"amount\": 200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/customers/topup",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"topup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 3,\n    \"accountOrigin\": {\n        \"id\": 3\n    },\n    \"accountDestination\": {\n        \"number\": \"73720384\"\n    },\n    \"amount\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/customers/trans",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"customers",
+						"trans"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
